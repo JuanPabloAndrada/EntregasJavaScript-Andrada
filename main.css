@@ -1,0 +1,115 @@
+/* CONVERSOR */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #252121;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+form {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+input[type="number"], select {
+    display: block;
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    background-color: #efeded;
+}
+
+button {
+    background-color: #0d7526;
+    color: #fff;
+    padding: 0.5em 1em;
+    border: none;
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: #df2727;
+}
+
+.resultado {
+    font-size: 1.2em;
+    padding: 1em;
+    text-align: center;
+}
+
+/* CALCULADORA */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #000000;
+    background-image: url("./images/FondoPagina.avif");
+}
+
+h2 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+form  {
+    display: inline-block;
+    text-align: left;
+    padding: 30px;
+    border: 4px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(204, 200, 200, 0.5);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    
+}
+
+input[type="number"] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+    background-color: #0d7526;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+.resultado {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+
+
+
