@@ -1,3 +1,57 @@
+//LOGIN Y REGISTRARSE//
+
+const usuariosRegistrados = [
+    { usuario: 'usuario1', contraseña: 'contraseña1' },
+    { usuario: 'usuario2', contraseña: 'contraseña2' },
+    { usuario: 'usuario3', contraseña: 'contraseña3' }
+];
+
+  // erificar el inicio de sesión
+function iniciarSesion() {
+    const usuario = prompt('Usuario:');
+    const contraseña = prompt('Contraseña:');
+
+    // Verificar si el usuario existe y la contraseña es correcta
+    const usuarioEncontrado = usuariosRegistrados.find((usuarioRegistrado) => usuarioRegistrado.usuario === usuario);
+
+    if (usuarioEncontrado && usuarioEncontrado.contraseña === contraseña) {
+    alert('Inicio de sesión exitoso');
+    } else {
+    alert('Usuario o contraseña incorrectos');
+    }
+}
+
+  //  registrar un nuevo usuario
+function registrarUsuario() {
+    const usuario = prompt('Nuevo usuario:');
+    const contraseña = prompt('Contraseña:');
+
+    // Verificar si el usuario ya existe
+    const usuarioExistente = usuariosRegistrados.find((usuarioRegistrado) => usuarioRegistrado.usuario === usuario);
+
+    if (usuarioExistente) {
+        alert('El usuario ya existe. Por favor, elija otro nombre de usuario.');
+    } else {
+      // Agregar usuario
+    usuariosRegistrados.push({ usuario, contraseña });
+        alert('Registro exitoso. Ahora puedes iniciar sesión con tu nuevo usuario.');
+    }
+}
+
+
+const opcion = parseInt(prompt('Selecciona una opción:\n1. Iniciar sesión\n2. Registrarse'));
+
+switch (opcion) {
+    case 1:
+        iniciarSesion();
+        break;
+    case 2:
+        registrarUsuario();
+        break;
+    default:
+        alert('Opción inválida');
+        break;
+}
 
 
 //CALCULADORA//
@@ -54,3 +108,14 @@ const resultadoConversion = (monto / tasaDeCambioOrigen) * tasaDeCambioDestino;
 
 alert(`${monto} ${monedaOrigen} son ${resultadoConversion} ${monedaDestino}`);
 
+var menuHolder = document.getElementById('menuHolder')
+    var siteBrand = document.getElementById('siteBrand')
+    function menuToggle(){
+        if(menuHolder.className === "drawMenu") menuHolder.className = ""
+        else menuHolder.className = "drawMenu"
+    }
+        if(window.innerWidth < 426) siteBrand.innerHTML = "MAS"
+    window.onresize = function(){
+        if(window.innerWidth < 420) siteBrand.innerHTML = "MAS"
+        else siteBrand.innerHTML = "MY AWESOME WEBSITE"
+    }

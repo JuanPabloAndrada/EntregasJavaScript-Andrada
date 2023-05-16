@@ -1,4 +1,82 @@
 /* CONVERSOR */
+
+nav {
+    background-color: #f2f2f2;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #ddd;
+  }
+  
+  li.login {
+    float: right;
+  }
+  li.registrarse {
+    float: right;
+  }
+
+  h2 {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+  }
+  
+  table {
+    width: 600px;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
 body {
     margin: 0;
     padding: 0;
@@ -113,3 +191,46 @@ input[type="submit"]:hover {
 
 
 
+
+
+
+
+
+.footer {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+    }
+
+.footer p {
+    margin: 0;
+    }
+
+.footer a {
+    color: #333;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer .divider {
+    margin: 10px 0;
+    border-top: 1px solid #ccc;
+}
+
+.footer .social-icons {
+    margin-top: 20px;
+}
+
+.footer .social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer .social-icons img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
