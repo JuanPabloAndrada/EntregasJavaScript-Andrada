@@ -84,8 +84,8 @@ body {
 }
 
 header {
-    background-color: #252121;
-    color: #fff;
+    background-color: #161515;
+    color: #f9ea15;
     padding: 1em;
     text-align: center;
 }
@@ -115,8 +115,8 @@ input[type="number"], select {
 }
 
 button {
-    background-color: #0d7526;
-    color: #fff;
+    background-color: #f9ea15;
+    color: #000000;
     padding: 0.5em 1em;
     border: none;
     cursor: pointer;
@@ -124,7 +124,8 @@ button {
 }
 
 button:hover {
-    background-color: #df2727;
+    background-color: #369429;
+    
 }
 
 .resultado {
@@ -137,8 +138,8 @@ button:hover {
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #000000;
-    background-image: url("./images/FondoPagina.avif");
+    background-color: #161515;
+    background-image: url("./images/FondoPagina.jpg");
 }
 
 h2 {
@@ -170,8 +171,8 @@ input[type="number"] {
 }
 
 input[type="submit"] {
-    background-color: #0d7526;
-    color: white;
+    background-color: #f9ea15;
+    color: rgb(0, 0, 0);
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -193,7 +194,7 @@ input[type="submit"]:hover {
 
 
 
-
+/*FOOTER*/
 
 
 .footer {
@@ -220,16 +221,16 @@ input[type="submit"]:hover {
     border-top: 1px solid #ccc;
 }
 
-.footer .social-icons {
+.footer .iconos-redesSociales {
     margin-top: 20px;
 }
 
-.footer .social-icons a {
+.footer .iconos-redesSociales a {
     display: inline-block;
     margin-right: 10px;
 }
 
-.footer .social-icons img {
+.footer .iconos-redesSociales img {
     width: 24px;
     height: 24px;
     vertical-align: middle;
