@@ -9,110 +9,107 @@
 <body>
 
 
-	<nav>
-		<ul>
-		<li><a href="#">Inicio</a></li>
-		<li><a href="#">Divisas</a></li>
-		<li><a href="#">Calculadora</a></li>
-		<li><a href="#">Contacto</a></li>
-		<li><a href="#">Conversor</a></li>
-		<li class="login"><a href="#">Iniciar sesión</a></li>
-		<li class="registrarse"><a href="#">Registrarse</a></li>
+	<nav class="navbar">
+		<ul class="navbar-list navbar-list-left">
+		    <li><a href="#">Inicio</a></li>
+		    <li><a href="#">Calculadora</a></li>
+		    <li><a href="#">Conversor</a></li>
+		    <li><a href="#">Divisas</a></li>
+		</ul>
+		<ul class="navbar-list navbar-list-right">
+		    <li><a href="#" id="login-link">Inicio de Sesión</a></li>
+		    <li><a href="#" id="register-link">Registrarse</a></li>
 		</ul>
 	</nav>
+
+	</body>
+	</html>
 	
-    <script src="./main.js"></script>
+    
 	<header>
 		<h1>Conversor de Divisas y Calculadora</h1>
 		<p>Convierte entre diferentes divisas de forma rápida y sencilla.</p>
 	</header>
-	<div class="container">
-		<table>
-			<thead>
-			    <tr>
-			    	<th>Divisa</th>
-			    	<th>Tasa</th>
-			</tr>
+	<table id="TablaDivisas">
+		<thead>
+		    <tr>
+				<th>Divisa</th>
+				<th>Tasa de cambio</th>
+		    </tr>
 		</thead>
 		<tbody>
-			<tr>
-			    <td>Dólar estadounidense - USD</td>
-			    <td>1.0</td>
-			</tr>
-			<tr>
-			    <td>Euro - EUR</td>
-			    <td>0.8221</td>
-			</tr>
-			<tr>
-			    <td>Libra esterlina - GBP</td>
-			    <td>0.7372</td>
-			</tr>
-			<tr>
-				<td>Peso Argentino - ARS</td>
-				<td>220.89</td>
-			    </tr>
-			    <tr>
-				<td>Yen Japones - JPY</td>
-				<td>108.7500</td>
-			    </tr>
-			    <tr>
-				
-			</tr>
-			
+		<!-- Aquí se agregarán las filas de la tabla dinámicamente con JavaScript -->
 		</tbody>
-		</table>
+	</table>
+
+	
+	<div class="converter">
+    <h2>Conversor de Divisas</h2>
+
+    <div class="input-group">
+    	<label for="amount">Monto:</label>
+    	<input type="number" id="amount" step="0.01">
+    </div>
+
+    <div class="input-group">
+    	<label for="from">De:</label>
+    	<select id="from">
+        <option value="ARS">ARS - Peso argentino</option>
+    	<option value="USD">USD - Dólar estadounidense</option>
+    	<option value="GBP">GBP - Libra esterlina</option>
+    	<option value="JPY">JPY - Yen japonés</option>
+    	<option value="EUR">EUR - Euro</option>
+    </select>
 	</div>
 
+	<div class="input-group">
+    	<label for="to">A:</label>
+    	<select id="to">
+    	<option value="ARS">ARS - Peso argentino</option>
+    	<option value="USD">USD - Dólar estadounidense</option>
+    	<option value="GBP">GBP - Libra esterlina</option>
+    	<option value="JPY">JPY - Yen japonés</option>
+    	<option value="EUR">EUR - Euro</option>
+    </select>
+	</div>
 
-
-	<h2>Conversor de Divisas</h2>
-	<form id="conversorForm">
-		<label for="monto">Monto:</label>
-		<input type="number" id="monto" name="monto" step="0.01" required>
-
-		<label for="monedaOrigen">Moneda de origen:</label>
-		<select id="monedaOrigen" name="monedaOrigen" required>
-			<option value="USD">Dólar estadounidense</option>
-			<option value="EUR">Euro</option>
-			<option value="JPY">Yen japonés</option>
-			<option value="GBP">Libra esterlina</option>
-			<option value="ARS">Peso Argentino</option>
-		</select>
-
-		<label for="monedaDestino">Moneda de destino:</label>
-		<select id="monedaDestino" name="monedaDestino" required>
-			<option value="USD">Dólar estadounidense</option>
-			<option value="EUR">Euro</option>
-			<option value="JPY">Yen japonés</option>
-			<option value="GBP">Libra esterlina</option>
-			<option value="ARS">Peso Argentino</option>
-		</select>
-
-		<button type="submit">Convertir</button>
-	</form>
-
-	<div id="resultado" class="resultado"></div>
+	<button class="btn convert" onclick="convertirDivisas()">Convertir</button>
+	<input type="text" id="conversionResult" readonly>
+</div>
 	
-	<h2>Calculadora</h2>
+	
 
-	<form >
-		<label for="operando1">Ingrese primer numero:</label>
-		<input type="number" id="operando1" required>
-
-		<label for="operando2">Ingrese segundo numero:</label>
-		<input type="number" id="operando2" required>
-
-		<label for="operacion">Operación a realizar:</label>
-		<select id="operacion" required>
-			<option value="">Selecciona una operación</option>
-			<option value="+">Sumar</option>
-			<option value="-">Restar</option>
-			<option value="*">Multiplicar</option>
-			<option value="/">Dividir</option>
-		</select>
-
-		<input type="submit" value="Calcular">
-	</form>
+	<div class="supercalculadora">
+		<h2>Calculadora</h2>
+		<input type="text" id="display" readonly>
+	
+		<div>
+			<button class="btn" onclick="añadirNumero(7)">7</button>
+			<button class="btn" onclick="añadirNumero(8)">8</button>
+			<button class="btn" onclick="añadirNumero(9)">9</button>
+			<button class="btn" onclick="añadirOperacion('+')">+</button>
+		</div>
+		<div>
+			<button class="btn" onclick="añadirNumero(4)">4</button>
+			<button class="btn" onclick="añadirNumero(5)">5</button>
+			<button class="btn" onclick="añadirNumero(6)">6</button>
+			<button class="btn" onclick="añadirOperacion('-')">-</button>
+		</div>
+		<div>
+			<button class="btn" onclick="añadirNumero(1)">1</button>
+			<button class="btn" onclick="añadirNumero(2)">2</button>
+			<button class="btn" onclick="añadirNumero(3)">3</button>
+			<button class="btn" onclick="añadirOperacion('*')">*</button>
+		</div>
+		<div>
+			<button class="btn zero" onclick="añadirNumero(0)">0</button>
+			<button class="btn" onclick="añadirOperacion('/')">/</button>
+		</div>
+		<div>
+			<button class="btn clear" onclick="clearDisplay()">C</button>
+			<button class="btn" onclick="calcular()">=</button>
+		</div>
+	</div>
 	
 
 
@@ -130,5 +127,5 @@
 			</span>
 		</p>
 	</footer>
-
+	<script src="./main.js"></script>
 </body>

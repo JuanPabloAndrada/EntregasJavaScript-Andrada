@@ -1,110 +1,164 @@
-//LOGIN Y REGISTRARSE//
+//*INICIAR SESION Y REGISTRARSE*//
 
-const usuariosRegistrados = [
-    { usuario: 'usuario1', contraseña: 'contraseña1' },
-    { usuario: 'usuario2', contraseña: 'contraseña2' },
-    { usuario: 'usuario3', contraseña: 'contraseña3' }
-];
+// Obtener elementos de inicio de sesión y registro
+const loginLink = document.getElementById('login-link');
+const registerLink = document.getElementById('register-link');
 
-  // erificar el inicio de sesión
-function iniciarSesion() {
-    const usuario = prompt('Usuario:');
-    const contraseña = prompt('Contraseña:');
+// Obtener usuarios almacenados o inicializar un array vacío
+const storedUsers = localStorage.getItem('users');
+const users = storedUsers ? JSON.parse(storedUsers) : [];
 
-    // Verificar si el usuario existe y la contraseña es correcta
-    const usuarioEncontrado = usuariosRegistrados.find((usuarioRegistrado) => usuarioRegistrado.usuario === usuario);
+// Función para agregar un nuevo usuario
+function addUser(username, password) {
+  users.push({ username, password });
+  localStorage.setItem('users', JSON.stringify(users));
+}
 
-    if (usuarioEncontrado && usuarioEncontrado.contraseña === contraseña) {
+// verificar el inicio de sesióm
+function login() {
+  const username = prompt('Usuario:');
+  const password = prompt('Contraseña:');
+
+  // Verificar si el usuario existe y la contraseña es correcta
+  const user = users.find((user) => user.username === username);
+
+  if (user && user.password === password) {
     alert('Inicio de sesión exitoso');
-    } else {
-    alert('Usuario o contraseña incorrectos');
-    }
+  } else {
+    alert('Usuario no identificado');
+  }
 }
 
-  //  registrar un nuevo usuario
-function registrarUsuario() {
-    const usuario = prompt('Nuevo usuario:');
-    const contraseña = prompt('Contraseña:');
+//  eventos a los enlaces de inicio de sesión y registro
+loginLink.addEventListener('click', function(event) {
+  event.preventDefault();
+  login();
+});
 
-    // Verificar si el usuario ya existe
-    const usuarioExistente = usuariosRegistrados.find((usuarioRegistrado) => usuarioRegistrado.usuario === usuario);
-
-    if (usuarioExistente) {
-        alert('El usuario ya existe. Por favor, elija otro nombre de usuario.');
-    } else {
-      // Agregar usuario
-    usuariosRegistrados.push({ usuario, contraseña });
-        alert('Registro exitoso. Ahora puedes iniciar sesión con tu nuevo usuario.');
-    }
-}
-
-
-const opcion = parseInt(prompt('Selecciona una opción:\n1. Iniciar sesión\n2. Registrarse'));
-
-switch (opcion) {
-    case 1:
-        iniciarSesion();
-        break;
-    case 2:
-        registrarUsuario();
-        break;
-    default:
-        alert('Opción inválida');
-        break;
-}
+registerLink.addEventListener('click', function(event) {
+  event.preventDefault();
+  const username = prompt('Nuevo usuario:');
+  const password = prompt('Contraseña:');
+  addUser(username, password);
+  alert('Usuario registrado exitosamente');
+});
 
 
 //CALCULADORA//
-function calculadora(numero1,numero2,operacion){
-    switch (operacion) {
-        case "+":
-            return numero1 + numero2;
-            break;
-        case "-":
-            return numero1 - numero2;
-            break;
-        case "*":
-            return numero1 * numero2;
-            break;
-        case "/":
-            return numero1 / numero2;
-            break;
-        default:
-            return "operacion no identificada"
-            break;      
-        
-    }
-    
+let Numero = '';
+let Operacion = '';
+let Resultado = '';
+
+function añadirNumero(num) {
+    Numero += num;
+    document.getElementById('display').value = Numero;
 }
 
-let numero1 = parseInt(prompt("Bienvenido!!, Ingrese el primer numero.."));
-let numero2 = parseInt(prompt("Ingrese el segundo numero.."));
-let operacion = prompt("Ingrese operacion a realizar..");
+function añadirOperacion(op) {
+    Operacion = op;
+    Resultado = Numero;
+    Numero = '';
+}
 
-let resultado = calculadora(numero1, numero2, operacion);
-alert(resultado);
+function clearDisplay() {
+    Numero = '';
+    Operacion = '';
+    Resultado = '';
+    document.getElementById('display').value = '';
+}
+
+function calcular() {
+let calculationResult = 0;
+    switch (Operacion) {
+        case '+':
+        calculationResult = parseFloat(Resultado) + parseFloat(Numero);
+        break;
+        case '-':
+        calculationResult = parseFloat(Resultado) - parseFloat(Numero);
+        break;
+        case '*':
+      calculationResult = parseFloat(Resultado) * parseFloat(Numero);
+    break;
+        case '/':
+        calculationResult = parseFloat(Resultado) / parseFloat(Numero);
+        break;
+    default:
+        break;
+}
+
+clearDisplay();
+    document.getElementById('display').value = calculationResult;
+}
+
 
 
 
 //CAMBIO DE DIVISAS//
-const monto = parseFloat(prompt('Introduzca el monto que deseas convertir:'));  
-const monedaOrigen = prompt('Introduzca la moneda de origen (ejemplo: USD):');  
-const monedaDestino = prompt('Introduzca la moneda de destino (ejemplo: EUR):'); 
+function convertirDivisas() {
+    const cantidad = parseFloat(document.getElementById('amount').value);
+    const deMoneda = document.getElementById('from').value;
+    const aMoneda = document.getElementById('to').value;
 
-const tasasDeCambio = {
-    USD: 1.0, 
-    EUR: 0.8221, 
-    JPY: 108.7500 , 
-    GBP: 0.7372, 
-    ARS: 220.89,   
-};
+    const tasasDeCambio = {
+    ARS: {
+        USD: 0.011,
+        GBP: 0.008,
+        JPY: 1.21,
+        EUR: 0.009
+        },
+    USD: {
+        ARS: 91.25,
+        GBP: 0.72,
+        JPY: 109.46,
+        EUR: 0.82
+        },
+    GBP: {
+        ARS: 123.51,
+        USD: 1.38,
+        JPY: 151.44,
+        EUR: 1.14
+        },
+    JPY: {
+        ARS: 0.83,
+        USD: 0.0091,
+        GBP: 0.0066,
+        EUR: 0.0075
+        },
+    EUR: {
+        ARS: 111.50,
+        USD: 1.21,
+        GBP: 0.88,
+        JPY: 133.58
+        }
+    };
 
-const tasaDeCambioOrigen = tasasDeCambio[monedaOrigen];
-const tasaDeCambioDestino = tasasDeCambio[monedaDestino];
+    const conversion = cantidad * tasasDeCambio[deMoneda][aMoneda];
+    document.getElementById('conversionResult').value = conversion.toFixed(2);
+}
 
-const resultadoConversion = (monto / tasaDeCambioOrigen) * tasaDeCambioDestino;
+/*DIVISAS*/
+const divisas = [
+    { divisa: 'USD', tasa: 1.21 },
+    { divisa: 'EUR', tasa: 0.88 },
+    { divisa: 'GBP', tasa: 1.38 },
+    { divisa: 'JPY', tasa: 109.46 },
+    { divisa: 'ARS', tasa: 91.25 },
     
-    
+    // Agrega más divisas si es necesario
+    ];
 
-alert(`${monto} ${monedaOrigen} son ${resultadoConversion} ${monedaDestino}`);
+const divisasTable = document.getElementById('TablaDivisas');
+const tbody = divisasTable.querySelector('tbody');
 
+    divisas.forEach((divisa) => {
+        const fila = document.createElement('tr');
+        const divisaCell = document.createElement('td');
+        const tasaCell = document.createElement('td');
+
+    divisaCell.textContent = divisa.divisa;
+    tasaCell.textContent = divisa.tasa.toFixed(2);
+
+    fila.appendChild(divisaCell);
+    fila.appendChild(tasaCell);
+    tbody.appendChild(fila);
+});
